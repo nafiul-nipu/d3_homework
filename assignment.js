@@ -27,19 +27,25 @@ var zoom = d3.behavior.zoom()
    .scaleExtent([1, Infinity])
    .on("zoom",zoomed);
 
+
+
 svg.call(zoom);
 
 d3.json("us-states.geojson",function(error,geodata) {
  if (error) return console.log(error); //unknown error, check the console
 
- //Create a path for each map feature in the data
- features.selectAll("path")
-   .data(geodata.features)
-   .enter()
-   .append("path")
-   .attr("d",path)
-   .on("click",clicked);
 
+
+
+
+ //Create a path for each map feature in the data
+   features.selectAll("path")
+      .data(geodata.features)
+      .enter()
+      .append("path")
+      .attr("d",path)
+      .on("click",clicked)
+   
 });
 
 // Add optional onClick events for features here
