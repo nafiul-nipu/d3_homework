@@ -7,6 +7,7 @@ var width = 600,
 var projection = d3.geo.albersUsa()
    .scale(730.2209486090715)
    .translate([width/2,height/2]) //translate to center the map in view
+   
 
 //Generate paths based on projection
 var path = d3.geo.path()
@@ -15,7 +16,8 @@ var path = d3.geo.path()
 //Create an SVG
 var svg = d3.select("body").append("svg")
    .attr("width", width)
-   .attr("height", height);
+   .attr("height", height)
+   .style('border', '1px solid black');
 
 //Group for the map features
 var features = svg.append("g")
