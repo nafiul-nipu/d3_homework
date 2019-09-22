@@ -31,10 +31,13 @@ var zoom = d3.behavior.zoom()
 
 
 
+
+
 svg.call(zoom);
 
 d3.json("us-states.geojson",function(error,geodata) {
  if (error) return console.log(error); //unknown error, check the console
+ 
 
 
 
@@ -53,6 +56,22 @@ d3.json("us-states.geojson",function(error,geodata) {
 // Add optional onClick events for features here
 // d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
 function clicked(d,i) {
+   d3.json("freq_by_state.json",function(error,data) {
+      if (error) return console.log(error); //unknown error, check the console
+
+
+      for (var index = 0 ; index < data.length ; index++){
+         if(d.properties.NAME == data[index].NAME){
+
+            d3.select('#clicked').html(d.properties.NAME +" = " + data[index].NAME);
+         }
+
+      }
+      
+     
+     
+        
+     });
 
 }
 
