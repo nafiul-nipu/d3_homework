@@ -1,12 +1,21 @@
 
 //Map dimensions (in pixels)
-var width = 600,
-   height = 350;
+//var width = 1000,
+      //height = 650;
+
+//imported code from website bookmarked
+//this code will help to resize the map with respect to browser
+// var margin = {top: 10, left: 10, bottom: 10, right: 10}
+//   , width = parseInt(d3.select('#map').style('width'))
+//   , width = width - margin.left - margin.right
+//   , mapRatio = .5
+//   , height = width * mapRatio;
+
 
 //Map projection
 var projection = d3.geo.albersUsa()
-   .scale(730.2209486090715)
-   .translate([width/2,height/2]) //translate to center the map in view
+   .scale(1100)
+   //.translate([width/2,height/2]) //translate to center the map in view
    
 
 //Generate paths based on projection
@@ -14,9 +23,10 @@ var path = d3.geo.path()
    .projection(projection);
 
 //Create an SVG
-var svg = d3.select("body").append("svg")
-   .attr("width", width)
-   .attr("height", height)
+var svg = d3.select("#map").append("svg")
+   .attr("width", "100%")
+   //.attr("height", height)
+   .append('g')
    .style('border', '1px solid black');
 
 //Group for the map features
@@ -81,3 +91,37 @@ function zoomed() {
  features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
      .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px" );
 }
+
+
+
+
+
+//when the browser resizes below code is for that
+d3.select(window).on('resize', resize);
+function resize() {
+   d3.select("g").attr("transform", "scale(" + $("#container").width()/900 + ")");
+   $("svg").height($("#container").width()*0.618);
+}
+
+
+// //resize function
+// function resize() {
+//    // adjust things when the window size changes
+//    width = parseInt(d3.select('#map').style('width'));
+//    width = width - margin.left - margin.right;
+//    height = width * mapRatio;
+
+//    // update projection
+//    projection
+//        .translate([width / 2, height / 2])
+//        .scale(width);
+
+//    // resize the map container
+//    map
+//        .style('width', width + 'px')
+//        .style('height', height + 'px');
+
+//    // resize the map
+//    map.select('.land').attr('d', path);
+//    map.selectAll('.state').attr('d', path);
+// }
