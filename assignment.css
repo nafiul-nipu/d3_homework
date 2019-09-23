@@ -1,18 +1,15 @@
+
 body {
     font: 12px sans-serif;
-    
-    
-
-   }
-   
-   path {
+  }
+  
+  path {
     stroke-width: 1px;
-    stroke: white;
-    fill: steelblue;
+    stroke: #ece7f2;
+    fill: #2b8cbe;
     cursor: pointer;
-    
-   }
-   
-   path:hover, path.highlighted {
-    fill: tomato;
-   }
+  }
+  
+  path:hover, path.highlighted {
+    fill: #a6bddb;
+  }
