@@ -1,8 +1,5 @@
 body {
     font: 12px sans-serif;
-    
-    
-
    }
    
    path {
@@ -10,7 +7,6 @@ body {
     stroke: white;
     fill: steelblue;
     cursor: pointer;
-    
    }
    
    path:hover, path.highlighted {
