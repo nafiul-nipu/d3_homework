@@ -1,11 +1,11 @@
 
 //Map dimensions (in pixels)
-var width = 600,
-   height = 350;
+var width = 1000,
+   height = 650;
 
 //Map projection
 var projection = d3.geo.albersUsa()
-   .scale(730.2209486090715)
+   .scale(1000)
    .translate([width/2,height/2]) //translate to center the map in view
    
 
@@ -14,7 +14,7 @@ var path = d3.geo.path()
    .projection(projection);
 
 //Create an SVG
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#map").append("svg")
    .attr("width", width)
    .attr("height", height)
    .style('border', '1px solid black');
