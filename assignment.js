@@ -60,7 +60,8 @@ function clicked(d,i) {
 function mouseOver(d){
     div.transition().duration(200)
                     .style('opacity', .9)
-    div.html(d.properties.males)
+    div.html('males: ' + d.properties.males + '<br> females: ' + d.properties.females
+                + '<br> state: ' + d.properties.name)
         .style('left' , (d3.event.pageX) + 'px')
         .style('top', (d3.event.pageY - 28) + 'px')
 }
