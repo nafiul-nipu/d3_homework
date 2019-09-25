@@ -11,10 +11,18 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
     .projection(projection);
 
+
 //Create an SVG
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .style('border', '1px solid black');
+
+//append Div for tootlip to svg
+var div = d3.select("body")
+            .append('div')
+            .attr('class', 'tooltip')
+            .style('opacity', 0);
 
 //Group for the map features
 var features = svg.append("g")
@@ -28,7 +36,7 @@ var zoom = d3.behavior.zoom()
 
 svg.call(zoom);
 
-d3.json("us-states.geojson",function(error,geodata) {
+d3.json("us-states-final.geojson",function(error,geodata) {
   if (error) return console.log(error); //unknown error, check the console
 
   //Create a path for each map feature in the data
@@ -37,8 +45,10 @@ d3.json("us-states.geojson",function(error,geodata) {
     .enter()
     .append("path")
     .attr("d",path)
-    .on("click",clicked);
-
+    .on("click",clicked)
+    //showing values 
+    .on('mouseover', mouseOver)
+    .on('mouseout', mouseOut)
 });
 
 // Add optional onClick events for features here
@@ -46,7 +56,20 @@ d3.json("us-states.geojson",function(error,geodata) {
 function clicked(d,i) {
 
 }
+//mouse over function
+function mouseOver(d){
+    div.transition().duration(200)
+                    .style('opacity', .9)
+    div.html(d.properties.males)
+        .style('left' , (d3.event.pageX) + 'px')
+        .style('top', (d3.event.pageY - 28) + 'px')
+}
 
+//mouse out function
+function mouseOut(d){
+    div.transition().duration(500)
+                    .style('opacity', 0)
+}
 
 //Update map on zoom/pan
 function zoomed() {
