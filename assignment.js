@@ -2,6 +2,7 @@
 var width = 1000,
     height = 650;
 
+var tempColor; //temp var for storing the color of a path so that after mouse over it can go back to its original color
 //Map projection
 var projection = d3.geoAlbersUsa()
     .scale(1217.0349143484525)
@@ -16,7 +17,8 @@ var path = d3.geoPath()
 var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .style('border', '1px solid black');
+    .style('border', '1px solid black')
+    .attr('fill', '#2b8cbe');
 
 //append Div for tootlip to svg
 var div = d3.select("#map")
@@ -31,10 +33,14 @@ var features = svg.append("g")
 //Create zoom/pan listener
 //Change [1,Infinity] to adjust the min/max zoom scale
 var zoom = d3.zoom()
-    .scaleExtent([1, Infinity])
+    // .extent([0,0], [width,height])
+    // .scaleExtent([1, Infinity])
     .on("zoom",zoomed);
 
-svg.call(zoom);
+svg.call(zoom)
+    .call(zoom.transform, d3.zoomIdentity  //Then apply the initial transform
+    .translate(width/2, height/2)
+    .scale(0.50));
 
 
 d3.json("us-states-final.geojson").then(function(geodata) {
@@ -53,8 +59,10 @@ d3.json("us-states-final.geojson").then(function(geodata) {
 
 
     var color_states = d3.scaleQuantize()
-                            .domain([d3.min(death_together),d3.mean(death_together), d3.max(death_together)])
-                            .range(["rgb(254,229,217)","rgb(252,174,145)","rgb(251,106,74)","rgb(222,45,38)","rgb(165,15,21)"]);
+                            .domain([d3.min(death_together),579, d3.max(death_together)])
+                            .range(["rgb(255,245,240)","rgb(254,224,210)"
+                            ,"rgb(252,187,161)","rgb(252,146,114)","rgb(251,106,74)"
+                            ,"rgb(239,59,44)","rgb(203,24,29)","rgb(153,0,13)"]);
     //d3.select('#check').html(d3.max(death_together) + "  <===>  "+ d3.min(death_together));
     d3.select('#check').html(d3.median(death_together));
     d3.select('#check2').html(death_together);
@@ -93,17 +101,31 @@ function mouseOver(d){
     div.html('State: ' + d.properties.name + '<br> Males: ' + d.properties.males + '<br> Females: ' + d.properties.females)
         .style('left' , (d3.event.pageX) + 'px')
         .style('top', (d3.event.pageY - 28) + 'px')
+    tempColor = this.style.fill
+    d3.select(this).style('fill', '#a6bddb')
 }
 
 //mouse out function
-function mouseOut(d){
+function mouseOut(){
     div.transition().duration(500)
                     .style('opacity', 0)
+    d3.select(this).style('fill', tempColor)
 }
 
 //Update map on zoom/pan
 function zoomed() {
-  features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
-      .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px" );
+    //New offset array
+    var offset = [d3.event.transform.x, d3.event.transform.y];
+
+    //Calculate new scale
+    var newScale = d3.event.transform.k * 2000;
+
+    //Update projection with new offset and scale
+    projection.translate(offset)
+                .scale(newScale);
+
+    //Update all paths and circles
+    svg.selectAll("path")
+        .attr("d", path);
 }
 //the end
