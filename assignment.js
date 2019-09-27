@@ -98,7 +98,7 @@ function clicked(d,i) {
 function mouseOver(d){
     div.transition().duration(200)
                     .style('opacity', .9)
-    div.html('State: ' + d.properties.name + '<br> Males: ' + d.properties.males + '<br> Females: ' + d.properties.females)
+    div.html('<b> State: ' + d.properties.name + '<br> Males: ' + d.properties.males + '<br> Females: ' + d.properties.females + '</b>')
         .style('left' , (d3.event.pageX) + 'px')
         .style('top', (d3.event.pageY - 28) + 'px')
     tempColor = this.style.fill
