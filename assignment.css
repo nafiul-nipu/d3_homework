@@ -3,26 +3,48 @@ body {
     font: 12px sans-serif;
   }
   
-  path {
+  #map path {
     stroke-width: 1px;
     stroke: #252525;
     fill: #2b8cbe;
-    cursor: pointer;
+    cursor: pointer; 
   }
   
-  path:hover, path.highlighted {
+  #map path:hover, path.highlighted {
     fill: #a6bddb;
   }
 
   div.tooltip {
       position: absolute;
       text-align: center;
-      width: 70px;
-      height: 70px;
+      width: 100px;
+      height: 100px;
       padding: 2px;
       font: 12px sans-serif;
-      background: white;
-      border: 0px;
+      background: rgb(255, 255, 255);
+      border: 2px;
+      border-color: black;
       border-radius: 8px;
       pointer-events: none;
   }
+
+  rect:hover {
+    fill: orange;
+  }
+  #button{
+    margin-top: 20px;
+    text-align: center;
+  }
+  #pie{
+    margin-top: 20px;
+  }
+  #pie path {
+    stroke-width: 0.5px;
+    stroke: #252525;
+    cursor: pointer; 
+  }
+  
+  #pie path:hover, path.highlighted {
+    fill: #a6bddb;
+  }
+  

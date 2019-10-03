@@ -1,0 +1,84 @@
+rank,city,males,females,lat,lng,state,name
+0,Abbeville,3,0,29.9746502,-92.1342921,LA,Louisiana
+1,Algiers,2,0,29.9510514,-90.08108878,LA,Louisiana
+2,Ascension Parish,1,0,30.20465845,-90.88963011,LA,Louisiana
+3,Baker,1,0,30.5882429,-91.168163,LA,Louisiana
+4,Baton Rouge,46,8,30.4507462,-91.154551,LA,Louisiana
+5,Bayou Vista,1,1,30.2813059,-89.8175651,LA,Louisiana
+6,Bossier City,3,2,32.5064115,-93.65183813,LA,Louisiana
+7,Bossier City ,1,0,32.5064115,-93.65183813,LA,Louisiana
+8,Caddo Parish,1,0,32.60755,-93.90238918,LA,Louisiana
+9,Calcasieu Parish,1,0,30.26537195,-93.36916972,LA,Louisiana
+10,Carencro,2,0,30.317144,-92.0490096,LA,Louisiana
+11,Chalmette,1,0,29.9427037,-89.9634017,LA,Louisiana
+12,Charenton,2,0,29.8815936,-91.5251127,LA,Louisiana
+13,Covington,4,1,30.4754702,-90.1009108,LA,Louisiana
+14,Creston,1,0,31.9759941,-93.049884,LA,Louisiana
+15,DeRidder,1,0,30.8463055,-93.2890528,LA,Louisiana
+16,Denham Springs,2,0,30.4868564,-90.9562125,LA,Louisiana
+17,Donaldsonville,2,0,30.1010324,-90.9928774,LA,Louisiana
+18,Duson,1,0,30.2357577,-92.1854035,LA,Louisiana
+19,East Baton Rouge,1,0,30.4143987,-91.1774318,LA,Louisiana
+20,Ebarb,1,0,31.635777,-93.648603,LA,Louisiana
+21,Edgard,1,0,30.0432578,-90.5600869,LA,Louisiana
+22,Ferriday,1,0,31.6301664,-91.5545649,LA,Louisiana
+23,Garyville,1,0,30.056035,-90.6192554,LA,Louisiana
+24,Geismar,1,0,30.2043633,-91.0226013,LA,Louisiana
+25,Gentilly,4,0,30.0156248,-90.0518356,LA,Louisiana
+26,Gonzales,1,0,30.2385294,-90.9200987,LA,Louisiana
+27,Harahan,1,0,29.9404826,-90.2031313,LA,Louisiana
+28,Harvey,14,0,29.9035387,-90.0772944,LA,Louisiana
+29,Houma,9,1,29.5957696,-90.7195348,LA,Louisiana
+30,Jamestown,1,0,32.3440452,-93.2118341,LA,Louisiana
+31,Jeanerette,1,0,29.9110378,-91.6634484,LA,Louisiana
+32,Jena,1,0,31.6832271,-92.1337448,LA,Louisiana
+33,Kenner,7,0,29.9940924,-90.2417434,LA,Louisiana
+34,Krotz Springs,1,0,30.5368592,-91.7528931,LA,Louisiana
+35,LaFayette,3,1,30.2240897,-92.0198427,LA,Louisiana
+36,LaPlace,5,1,30.0665907,-90.4800848,LA,Louisiana
+37,Lafayette Parish,1,1,30.208284,-92.11207429,LA,Louisiana
+38,Lafourche Parish,1,0,29.50317955,-90.36353872,LA,Louisiana
+39,Lake Charles,5,0,30.2265949,-93.2173759,LA,Louisiana
+40,Larose,1,1,29.572438,-90.3817483,LA,Louisiana
+41,Livingston Parish,1,0,30.412795,-90.74105907,LA,Louisiana
+42,Loranger,1,1,30.6357439,-90.3981441,LA,Louisiana
+43,Luling,1,0,29.9321498,-90.3664695,LA,Louisiana
+44,Mansfield,2,1,32.0376629,-93.7001819,LA,Louisiana
+45,Marrero,9,1,29.8993723,-90.1003506,LA,Louisiana
+46,Metairie,6,3,30.00135175,-90.17673135,LA,Louisiana
+47,Monroe,5,0,32.5093109,-92.1193012,LA,Louisiana
+48,Morgan City,1,0,29.6993748,-91.20677,LA,Louisiana
+49,Nairn,1,0,29.4279955,-89.6108947,LA,Louisiana
+50,New Orleans,146,17,29.9499323,-90.0701156,LA,Louisiana
+51,New Orleans ,1,0,29.9499323,-90.0701156,LA,Louisiana
+52,Port Allen,2,0,30.4521351,-91.2101081,LA,Louisiana
+53,Prairieville,2,0,30.3029721,-90.9720451,LA,Louisiana
+54,Ragley,1,0,30.512699,-93.2323813,LA,Louisiana
+55,Reserve,5,0,30.0538131,-90.5517534,LA,Louisiana
+56,River Ridge,3,0,29.9602043,-90.2156316,LA,Louisiana
+57,Ruston,1,0,32.5269104,-92.6463257,LA,Louisiana
+58,Shreveport,13,0,32.5221828,-93.7651944,LA,Louisiana
+59,Slidell,6,0,30.2751945,-89.7811745,LA,Louisiana
+60,Sorrento,1,0,30.1843642,-90.8592632,LA,Louisiana
+61,St. Bernard,1,0,29.8779823,-89.5969002,LA,Louisiana
+62,St. Joseph,2,0,31.9184926,-91.2334451,LA,Louisiana
+63,St. Rose,3,0,29.9468716,-90.3231349,LA,Louisiana
+64,St. Tammany Parish,1,0,30.4256963,-89.96205484,LA,Louisiana
+65,Terrebonne,1,0,29.4257758,-90.5674867,LA,Louisiana
+66,Terrytown,1,0,29.910205,-90.0325709,LA,Louisiana
+67,Thibodaux,2,0,29.7957633,-90.822871,LA,Louisiana
+68,Varnado,2,0,30.8937963,-89.8295203,LA,Louisiana
+69,Ville Platte,1,0,30.6879749,-92.2715157,LA,Louisiana
+70,Violet,1,0,29.8957605,-89.8978439,LA,Louisiana
+71,Waggaman,1,0,29.9185388,-90.2109093,LA,Louisiana
+72,West Monroe,1,1,32.5184775,-92.1476353,LA,Louisiana
+73,Winnfield,1,0,31.9254413,-92.6395932,LA,Louisiana
+74,Winnsboro,1,0,32.1632079,-91.720681,LA,Louisiana
+75,Bridge City,0,1,29.9332605,-90.1700748,LA,Louisiana
+76,Franklinton,0,1,30.8471283,-90.153141,LA,Louisiana
+77,Longville,0,1,30.6051979,-93.2318269,LA,Louisiana
+78,Many,0,1,31.5687848,-93.4840645,LA,Louisiana
+79,New Iberia,0,1,30.0035365,-91.8187285,LA,Louisiana
+80,Ponchatoula,0,1,30.4388041,-90.4414762,LA,Louisiana
+81,Slaughter,0,1,30.7174063,-91.1414958,LA,Louisiana
+82,St Joseph,0,1,31.9184926,-91.2334451,LA,Louisiana

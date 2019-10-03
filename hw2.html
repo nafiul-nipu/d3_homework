@@ -3,13 +3,41 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="assignment.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <div id="map"></div>
-    <div id="maleButton"><button>Male</button></div>
-    <div id="femaleButton"><button>Female</button></div>
-    <p id="check"></p>
-    <p id="check2"></p>
+    <div id="main_div">
+        <h1 style="text-align: center; font-family: Courier New;"><strong>Slate Gun Death Data of US</strong></h1>
+        <p><b>Manual:</b> <br> 1. Hover Over a States to see the information of the deaths of that state.
+        <br> 2. Click on the Buttons to see deaths in terms of male/female/all together
+        <br> 3. Clicking on any states a bar chart and a pie chart will be generated below the map. 
+        <br> 4. Bar Chart shows infomation of deaths of the cities in that state
+        <br> 5. Pie Chart shows information of deaths by state based on age group</p>
+        <div id="map">   
+                <div id="button" class="w3-container">
+                        <button class="w3-button w3-black w3-round-xlarge" id="male" type="button">Male</button>
+                        <button class="w3-button w3-black w3-round-xlarge" id="female" type="button">Female</button>
+                        <button class="w3-button w3-black w3-round-xlarge" id="together" type="button">All Together</button>
+                    </div>   
+        </div>
+
+
+    <div>
+            <div id="city">
+                </div>
+            <div id="pie"></div>
+    
+
+    </div>
+        
+        
+
+        
+        <p id='check'></p>
+    </div>
+    
+    
+    
 
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
