@@ -1,11 +1,96 @@
 <!DOCTYPE html>
+<html>
+<head>
 <meta charset="utf-8">
-<link href="assignment.css">
-<body>
-    <div id="map"></div>
+<link rel="stylesheet" type="text/css" href="css/assignment.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
 
-    <p id="clicked"></p>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div id="map"></div>
+            </div>
+            <div class="col-4">col-4
+                <div class="row">
+                    <div class="col">
+                        <div id="pie"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><div id="city"></div></div>
+                </div>
+            </div>
+          </div>
+        
+        <div class="row">
+            <div class="col-6">
+                <h1 style="text-align: center; font-family: Courier New;"><strong>Slate Gun Death Data of US</strong></h1>
+                <p><b>Manual:</b> <br> 1. Hover Over a States to see the information of the deaths of that state.
+                <br> 2. Click on the Buttons to see deaths in terms of male/female/all together
+                <br> 3. Clicking on any states a bar chart and a pie chart will be generated below the map. 
+                <br> 4. Bar Chart shows infomation of deaths of the cities in that state
+                <br> 5. Pie Chart shows information of deaths by state based on age group</p>
+            </div>
+            <div class="col-6">
+                <div id="button" class="w3-container">
+                    <button class="w3-button w3-black w3-round-xlarge" id="male" type="button">Male</button>
+                    <button class="w3-button w3-black w3-round-xlarge" id="female" type="button">Female</button>
+                    <button class="w3-button w3-black w3-round-xlarge" id="together" type="button">All Together</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div id="main_div"> -->
+        <!-- <h1 style="text-align: center; font-family: Courier New;"><strong>Slate Gun Death Data of US</strong></h1>
+        <p><b>Manual:</b> <br> 1. Hover Over a States to see the information of the deaths of that state.
+        <br> 2. Click on the Buttons to see deaths in terms of male/female/all together
+        <br> 3. Clicking on any states a bar chart and a pie chart will be generated below the map. 
+        <br> 4. Bar Chart shows infomation of deaths of the cities in that state
+        <br> 5. Pie Chart shows information of deaths by state based on age group</p> -->
+        <!-- <div id="map">    -->
+                <!-- <div id="button" class="w3-container">
+                        <button class="w3-button w3-black w3-round-xlarge" id="male" type="button">Male</button>
+                        <button class="w3-button w3-black w3-round-xlarge" id="female" type="button">Female</button>
+                        <button class="w3-button w3-black w3-round-xlarge" id="together" type="button">All Together</button>
+                    </div>    -->
+        <!-- </div> -->
+
+
+    <!-- <div>
+            <div id="city">
+                </div>
+            <div id="pie"></div>
     
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="assignment.js"></script>
+
+    </div> -->
+        
+        
+
+        
+        <!-- <p id='check'></p> -->
+    <!-- </div> -->
+    
+    
+    
+
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+<script src="js/assignment.js"></script>
+
+<!-- for bootstrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
 </body>
+
+
+</html>
