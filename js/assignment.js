@@ -1,12 +1,14 @@
 //Map dimensions (in pixels)
-var width = 1000,
+let width_test = document.getElementById("bar").offsetWidth;
+console.log(width_test);
+var width = document.getElementById("bar").offsetWidth,
     height = 650,
     padding = 40;
 
 var tempColor; //temp var for storing the color of a path so that after mouse over it can go back to its original color
 //Map projection
 var projection = d3.geoAlbersUsa()
-    .scale(1217.0349143484525)
+    .scale(width)
     .translate([width/2,height/2]) //translate to center the map in view
 
 //Generate paths based on projection
