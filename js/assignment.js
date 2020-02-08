@@ -1,7 +1,7 @@
 //Map dimensions (in pixels)
-let width_test = document.getElementById("bar").offsetWidth;
+let width_test = document.getElementById("map").offsetWidth;
 console.log(width_test);
-var width = document.getElementById("bar").offsetWidth,
+var width = document.getElementById("map").offsetWidth,
     height = 650,
     padding = 40;
 
@@ -264,7 +264,7 @@ function clicked(d,i) {
                   
       
                   var outerRadius = w_pie / 2;
-                  var innerRadius = 0;
+                  var innerRadius = w_pie/4;
                   var arc = d3.arc()
                               .innerRadius(innerRadius)
                               .outerRadius(outerRadius);
