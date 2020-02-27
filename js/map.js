@@ -41,6 +41,10 @@ let map = function( data, genderData){
       .data(data.features)
       .enter()
       .append("circle")
+      // .attr("cx", function(d){
+      //   return projection(d.features.geometry.coordinates[1])
+      // })
+
 
   
 
