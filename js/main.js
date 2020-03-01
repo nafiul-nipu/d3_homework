@@ -1,13 +1,17 @@
-let usStatesGeojson, freqByAgeGroup, freqByCity, freqByState;
+let usStatesGeojson, freqByAgeGroup, freqByCity, freqByState, city_lang_lon_info_csv;
 let male_death = [];
 let female_death = [];
 let death_together = [];
-let files = ["data/us-states-final.geojson", "data/freq_by_age_group.json", "data/freq_by_city.json", "data/freq_by_state.json"];
+let files = ["data/us-states-final.geojson", "data/freq_by_age_group.json", "data/freq_by_city.json", "data/freq_by_state.json", "data/freq_by_city.csv"];
 
 let promises = [];
 
 files.forEach(function (fileURL){
-    promises.push(d3.json(fileURL));
+    if(fileURL.includes("csv")){
+        promises.push(d3.csv(fileURL));
+    }else{
+        promises.push(d3.json(fileURL));
+    }
 });
 
 Promise.all(promises).then(function (values){
@@ -15,6 +19,7 @@ Promise.all(promises).then(function (values){
     freqByAgeGroup = values[1];
     freqByCity = values[2];
     freqByState = values[3];
+    city_lang_lon_info_csv = values[4]
     mainFunction();
 });
 
@@ -24,7 +29,7 @@ let mainFunction = function(){
         male_death[i] = usStatesGeojson.features[i].properties.males;
         female_death[i] = usStatesGeojson.features[i].properties.females;
     }
-    map(usStatesGeojson, death_together);
+    map(usStatesGeojson, city_lang_lon_info_csv, death_together);
     let normalization = $("#normalization-select").val();
     let gender = $("#gender-select").val();
     $("#normalization-select").on("change", mapNormalization);
@@ -40,6 +45,11 @@ let genderSelected = function (){
     gender = $("#gender-select").val();
     console.log(gender);
 }
+
+//windows event handler
+window.addEventListener("resize", function(){
+    map(usStatesGeojson,city_lang_lon_info_csv, death_together)
+});
 
 
 
