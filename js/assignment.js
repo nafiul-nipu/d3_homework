@@ -1,9 +1,10 @@
 //Map dimensions (in pixels)
-let width_test = document.getElementById("map").offsetWidth;
-console.log(width_test);
-var width = document.getElementById("map").offsetWidth,
-    height = 650,
-    padding = 40;
+let marginn = {top : 10, left: 10, bottom: 10, right: 10};
+  let width = document.getElementById("map").offsetWidth;
+  width = width - marginn.left - marginn.right;
+  let mapRatio = 0.5;
+  let height = width * mapRatio;
+   let padding = 40;
 
 var tempColor; //temp var for storing the color of a path so that after mouse over it can go back to its original color
 //Map projection
@@ -20,10 +21,10 @@ var path = d3.geoPath()
 var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .style('border', '3px solid black')
-    .style('display', 'block')
-    .style('margin', 'auto')
-    .attr('fill', '#2b8cbe');
+    // .style('border', '3px solid black')
+    // .style('display', 'block')
+    // .style('margin', 'auto')
+    // .attr('fill', '#2b8cbe');
 
 //append Div for tootlip to svg
 var div = d3.select("#map")
@@ -113,25 +114,92 @@ svg.append("g")
     .attr("transform", "translate(" + padding + ",0)")
     .call(yAxis);
 
+//by default will show the death together circles
+cityCircle("together", death_together);
+
+    
+
 //clicking male and female button
-d3.select('#male').on('click', maleClicked);
-d3.select('#female').on('click', femaleClicked);
-d3.select('#together').on('click', homeClicked);
+$("#gender-select").on("change", function(){
+    let gender = $("#gender-select").val();
+    if (gender == "male"){
+        console.log("male");
+        maleClicked();
+    }else if (gender == "female"){
+        console.log("female");
+        femaleClicked();
+    }else{
+        console.log("home")
+        homeClicked();
+    }
+});
 
 });
 
-// //clicking male and female button
-// d3.select('#male').on('click', maleClicked);
-// d3.select('#female').on('click', femaleClicked);
+//circle
+function cityCircle(toShow, genderData){
+    d3.csv("data/freq_by_city.csv").then(function(cityData){
+        let radiuScale = d3.scaleSqrt()
+                            .domain([d3.min(genderData), d3.max(genderData)])
+                            .range([1, 7]);
+
+        let cityColor = d3.scaleOrdinal()
+                                .domain([d3.min(genderData), d3.max(genderData)])
+                                .range(d3.schemeSet3);
+
+
+        console.log(toShow);
+        console.log(genderData);
+
+            features.selectAll("circle")
+            .data(cityData)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) {
+            return projection([d.lng, d.lat])[0];
+            })
+            .attr("cy", function(d) {
+            return projection([d.lng, d.lat])[1];
+            })
+            .attr("r", function(d){
+                if(toShow == "together"){
+                    let altogether = d.males + d.females ;
+                    console.log("together selected")
+                    return (radiuScale(altogether));
+                }else if(toShow == "male"){
+                    console.log("male selected")
+                    return (radiuScale(d.males));
+                }else if (toShow == "female"){
+                    console.log("female selected")
+                    return (radiuScale(d.females));
+                }
+            })
+            .style("fill", function(d){
+                if(toShow == "together"){
+                    let altogether = d.males + d.females ;
+                    // console.log(altogether)
+                    return (cityColor(altogether));
+                }else if(toShow == "male"){
+                    return (cityColor(d.males));
+                }else if (toShow == "female"){
+                    return (cityColor(d.females));
+                }
+            })
+
+    });
+}
+
+
+
 
 // Add optional onClick events for features here
 // d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
 function clicked(d,i) {
     
     //d3.select('#city').html(d.properties.name);
-    d3.select('#city').select('svg').remove();
-    d3.select('#city').select('h2').remove();
-    d3.select('#city').select('p').remove();
+    d3.select('#bar').select('svg').remove();
+    d3.select('#bar').select('h2').remove();
+    d3.select('#bar').select('p').remove();
     d3.select('#pie').select('svg').remove();
     d3.select('#pie').select('h2').remove();
     d3.select('#pie').select('p').remove();
@@ -167,7 +235,7 @@ function clicked(d,i) {
         //var w = 1000;
         var h = 250;
 
-        var div2 = d3.select("#city")
+        var div2 = d3.select("#bar")
                         .append('div')
                         .attr('class', 'tooltip')
                         .style('opacity', 0);
@@ -181,14 +249,14 @@ function clicked(d,i) {
                             .domain([d3.min(city_death), d3.max(city_death)])
                             .range([0, w]);
 
-        d3.select('#city').append('h2')
-                        .html('<strong> State : ' + d.properties.name + '</strong>')
-                        .style('text-align', 'center');
-        d3.select('#city').append('p')
-                        .html('<b>Bar Chart Showing Total Death Per City<br><em>  Hover Over The Bars </em> </b>')
-                        .style('text-align', 'center');
+        // d3.select('#bar').append('h2')
+        //                 .html('<strong> State : ' + d.properties.name + '</strong>')
+        //                 .style('text-align', 'center');
+        // d3.select('#bar').append('p')
+        //                 .html('<b>Bar Chart Showing Total Death Per City<br><em>  Hover Over The Bars </em> </b>')
+        //                 .style('text-align', 'center');
         
-        var svgBar = d3.select('#city')
+        var svgBar = d3.select('#bar')
                         .append('svg')
                         .attr('width', w)
                         .attr('height', h)
@@ -235,12 +303,12 @@ function clicked(d,i) {
         //pie chart for age group
         d3.json('data/freq_by_age_group.json').then(function(age){
 
-            d3.select('#pie').append('h2')
-                        .html('<b> Pie Chart Showing Statistics of Death By Age Group </b')
-                        .style('text-align', 'center');
-            d3.select('#pie').append('p')
-                        .html('<b> Hover Over The Pie Chart</b')
-                        .style('text-align', 'center');
+            // d3.select('#pie').append('h2')
+            //             .html('<b> Pie Chart Showing Statistics of Death By Age Group </b')
+            //             .style('text-align', 'center');
+            // d3.select('#pie').append('p')
+            //             .html('<b> Hover Over The Pie Chart</b')
+            //             .style('text-align', 'center');
 
             var div3 = d3.select("#pie")
                         .append('div')
@@ -379,8 +447,8 @@ function mouseOut(){
 //male button click function
 function maleClicked(){
     //d3.json("us-states-final.geojson").then(function(geodata) {
-    console.log(d3.min(male_death));
-    console.log(d3.max(male_death));
+    // console.log(d3.min(male_death));
+    // console.log(d3.max(male_death));
     var color_states = d3.scaleQuantize()
                             .domain([d3.min(male_death),637, d3.max(male_death)])
                             .range(["rgb(255,245,240)","rgb(254,224,210)"
@@ -399,6 +467,8 @@ function maleClicked(){
                                 
             })
         //})
+    
+    cityCircle("male", male_death);
 
     yScale.domain([d3.min(male_death), d3.max(male_death)]);
         //Update Y axis
@@ -412,8 +482,8 @@ function maleClicked(){
 //female button click function
 function femaleClicked(){
      //d3.json("us-states-final.geojson").then(function(geodata) {
-        console.log(d3.min(female_death));
-        console.log(d3.max(female_death));
+        // console.log(d3.min(female_death));
+        // console.log(d3.max(female_death));
         var color_states = d3.scaleQuantize()
                                 .domain([d3.min(female_death), d3.max(female_death)])
                                 .range(["rgb(255,245,240)","rgb(254,224,210)"
@@ -429,6 +499,8 @@ function femaleClicked(){
        
                 })
             //})
+
+        cityCircle("female", female_death);
         yScale.domain([d3.min(female_death), d3.max(female_death)]);
             //Update Y axis
         svg.select(".y.axis")
@@ -439,8 +511,8 @@ function femaleClicked(){
 
 function homeClicked(){
     //d3.json("us-states-final.geojson").then(function(geodata) {
-        console.log(d3.min(death_together));
-        console.log(d3.max(death_together));
+        // console.log(d3.min(death_together));
+        // console.log(d3.max(death_together));
         var color_states = d3.scaleQuantize()
                                 .domain([d3.min(death_together),579, d3.max(death_together)])
                                 .range(["rgb(255,245,240)","rgb(254,224,210)"
@@ -457,6 +529,8 @@ function homeClicked(){
                                     
                 })
             //})
+
+        cityCircle("together", death_together);
         yScale.domain([d3.min(death_together), d3.max(death_together)]);
             //Update Y axis
         svg.select(".y.axis")

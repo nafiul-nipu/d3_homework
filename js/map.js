@@ -35,7 +35,8 @@ let map = function( data, cityData, genderData){
         }else{
           return "#ccc";
         }
-      });
+      })
+      .on("click", clicked);
 
   //make tha circle
   //getting the coordinates of a city for the state circle
@@ -45,8 +46,12 @@ let map = function( data, cityData, genderData){
   // }))
 
   let radiuScale = d3.scaleSqrt()
-                      .domain([0, 97])
-                      .range([1, 20]);
+                      .domain([d3.min(genderData), d3.max(genderData)])
+                      .range([1, 7]);
+
+  let cityColor = d3.scaleOrdinal()
+                    .domain([d3.min(genderData), d3.max(genderData)])
+                    .range(d3.schemeSet3);
 
   svg.selectAll("circle")
       .data(cityData)
@@ -59,11 +64,22 @@ let map = function( data, cityData, genderData){
         return projection([d.lng, d.lat])[1];
       })
       .attr("r", function(d){
-        return (5)
+        let altogether = d.males + d.females ;
+        // console.log(altogether)
+        return (radiuScale((altogether)))
       })
-      .style("fill", "yellow")
+      .style("fill", function(d){
+        let altogether = d.males + d.females;
+        // console.log(altogether)
+        // console.log(cityColor(altogether))
+        return(cityColor(altogether))
 
+      })  
 
   
+
+}
+let clicked = function(data){
+
 
 }
